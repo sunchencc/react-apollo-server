@@ -34,4 +34,5 @@ react-apollo graphql 后端实现
     "compression": "1.7.4"
     
 # .babelrc
-这个文件是为了配置babel解释器，不然很多ES6的语法不能正常使用
+Babel是一个广为使用的ES6转码器，可以将ES6代码转为ES5代码，从而在浏览器或其它环境执行。
+Babel的配置文件时.babelrc，存放在项目的根目录下。使用Babel的第一步就是配置这个文件。
