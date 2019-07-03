@@ -32,6 +32,12 @@ const definitions =
     {
       get_persons: [person]
     }
+    
+    type Mutation
+    {
+      remove_person(id: ID!): String
+      add_person(id: ID!, age: Int!, name: String!): String
+    }
   `;
 
 const resolvers =
@@ -41,6 +47,41 @@ const resolvers =
         get_persons: ()=>
         {
           return persons;
+        }
+      },
+    Mutation:
+      {
+        remove_person: (_, { id })=>
+        {
+          let index;
+          
+          persons.filter((d, i)=>
+          {
+            if (d.id === id)
+            {
+              index = i;
+            }
+          });
+          
+          persons.splice(index, 1);
+          
+          return 'success';
+        },
+        
+        add_person: (_, { id, age, name })=>
+        {
+          const person =
+            {
+              id:   id,
+              age:  age,
+              name: name
+            };
+          
+          console.log(person);
+          
+          persons.push(person);
+          
+          return 'success';
         }
       }
   };
